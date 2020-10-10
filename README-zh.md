@@ -70,7 +70,7 @@ ps: wider_val.txt 只包括验证集的文件名不包括标注信息.
 
 ## 训练
 我们使用**restnet50**和**mobilenet0.25**作为主干网络来训练模型。
-使用**Mobilenet0.25**作为主干网络，并在**ImageNet数据集**上训练，获得了46.58% ，如果你不希望重新训练模型，我们也提供了训练模型。预训练模型和微调模型都可以从[谷歌盘](https://drive.google.com/open?id=1oZRSG0ZegbVkVwUd8wUIQx8W7yfZ_ki1)和[百度盘](https://pan.baidu.com/s/12h97Fy1RYuqMMIV-RpzdPg)下载，密码：**fstq**。
+使用**Mobilenet0.25**作为主干网络，并在**ImageNet数据集**上训练 and get 46.58% in Top 1(意思应该是: ImageNet数据集有上千类，我们只看概率最高的那个结果正确性，准确率为46.58%)，如果你不希望重新训练模型，我们也提供了训练模型。预训练模型和微调模型都可以从[谷歌盘](https://drive.google.com/open?id=1oZRSG0ZegbVkVwUd8wUIQx8W7yfZ_ki1)和[百度盘](https://pan.baidu.com/s/12h97Fy1RYuqMMIV-RpzdPg)下载，密码：**fstq**。
 
 下载文件的目录结构如下：
 ```Shell
