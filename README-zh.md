@@ -70,16 +70,18 @@ ps: wider_val.txt 只包括验证集的文件名不包括标注信息.
 
 ## 训练
 我们使用**restnet50**和**mobilenet0.25**作为主干网络来训练模型。
-使用**Mobilenet0.25**作为主干网络，并在**ImageNet数据集**上训练，获得了46.58% ，如果你不希望重新训练模型，我们也提供了训练模型。预训练模型和微调模型都可以从[谷歌盘](https://drive.google.com/open?id=1oZRSG0ZegbVkVwUd8wUIQx8W7yfZ_ki1)和[百度盘](https://pan.baidu.com/s/12h97Fy1RYuqMMIV-RpzdPg)下载，密码：**fstq**。下载文件的目录结构如下：
+使用**Mobilenet0.25**作为主干网络，并在**ImageNet数据集**上训练，获得了46.58% ，如果你不希望重新训练模型，我们也提供了训练模型。预训练模型和微调模型都可以从[谷歌盘](https://drive.google.com/open?id=1oZRSG0ZegbVkVwUd8wUIQx8W7yfZ_ki1)和[百度盘](https://pan.baidu.com/s/12h97Fy1RYuqMMIV-RpzdPg)下载，密码：**fstq**。
+
+下载文件的目录结构如下：
 ```Shell
   ./weights/
       mobilenet0.25_Final.pth
       mobilenetV1X0.25_pretrain.tar
       Resnet50_Final.pth
 ```
-1. Before training, you can check network configuration (e.g. batch_size, min_sizes and steps etc..) in ``data/config.py and train.py``.
+1. 训练前，可以检查配置文件 (e.g. batch_size, min_sizes and steps etc..) in ``data/config.py and train.py``.
 
-2. Train the model using WIDER FACE:
+2. 使用**WIDER FACE**数据集训练模型:
   ```Shell
   CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --network resnet50 or
   CUDA_VISIBLE_DEVICES=0 python train.py --network mobile0.25
@@ -87,31 +89,31 @@ ps: wider_val.txt 只包括验证集的文件名不包括标注信息.
 
 
 ## 评价
-### Evaluation widerface val
-1. Generate txt file
+### **widerface**数据集做评价
+1. 生成txt文件
 ```Shell
 python test_widerface.py --trained_model weight_file --network mobile0.25 or resnet50
 ```
-2. Evaluate txt results. Demo come from [Here](https://github.com/wondervictor/WiderFace-Evaluation)
+2. 评估结果。[例子可以看这里](https://github.com/wondervictor/WiderFace-Evaluation)
 ```Shell
 cd ./widerface_evaluate
 python setup.py build_ext --inplace
 python evaluation.py
 ```
-3. You can also use widerface official Matlab evaluate demo in [Here](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html)
-### Evaluation FDDB
+3. [官方]You can also use widerface official Matlab evaluate demo in [Here](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html)
+### 使用**FDDB**评估
 
-1. Download the images [FDDB](https://drive.google.com/open?id=17t4WULUDgZgiSy5kpCax4aooyPaz3GQH) to:
+1. 下载图片集 [FDDB](https://drive.google.com/open?id=17t4WULUDgZgiSy5kpCax4aooyPaz3GQH) to:
 ```Shell
 ./data/FDDB/images/
 ```
 
-2. Evaluate the trained model using:
+2. 使用下面代码评估训练模型:
 ```Shell
 python test_fddb.py --trained_model weight_file --network mobile0.25 or resnet50
 ```
 
-3. Download [eval_tool](https://bitbucket.org/marcopede/face-eval) to evaluate the performance.
+3. 下载 [eval_tool](https://bitbucket.org/marcopede/face-eval) 工具来评估性能。
 
 <p align="center"><img src="curve/1.jpg" width="640"\></p>
 
