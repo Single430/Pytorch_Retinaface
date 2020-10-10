@@ -31,26 +31,26 @@
 <p align="center"><img src="curve/FDDB.png" width="640"\></p>
 
 ### 内容
-- [Installation](#installation)
-- [Training](#training)
-- [Evaluation](#evaluation)
-- [TensorRT](#tensorrt)
-- [References](#references)
+- [安装](#installation)
+- [训练](#training)
+- [评价](#evaluation)
+- [TensorRT加速](#tensorrt)
+- [参考文献](#references)
 
-## Installation
-##### Clone and install
-1. git clone https://github.com/biubug6/Pytorch_Retinaface.git
+## 安装
+##### 克隆代码并安装
+1. ``git clone https://github.com/biubug6/Pytorch_Retinaface.git``
 
 2. Pytorch version 1.1.0+ and torchvision 0.3.0+ are needed.
 
-3. Codes are based on Python 3
+3. 代码基于 Python3
 
-##### Data
-1. Download the [WIDERFACE](http://shuoyang1213.me/WIDERFACE/WiderFace_Results.html) dataset.
+##### 数据1
+1. 下载 [WIDERFACE](http://shuoyang1213.me/WIDERFACE/WiderFace_Results.html) 数据集.
 
-2. Download annotations (face bounding boxes & five facial landmarks) from [baidu cloud](https://pan.baidu.com/s/1Laby0EctfuJGgGMgRRgykA) or [dropbox](https://www.dropbox.com/s/7j70r3eeepe4r2g/retinaface_gt_v1.1.zip?dl=0)
+2. 从 [baidu cloud](https://pan.baidu.com/s/1Laby0EctfuJGgGMgRRgykA) or [dropbox](https://www.dropbox.com/s/7j70r3eeepe4r2g/retinaface_gt_v1.1.zip?dl=0) 下载标注数据（人脸标注框和5个面部关键点）
 
-3. Organise the dataset directory as follows:
+3. 数据目录结构如下:
 
 ```Shell
   ./data/widerface/
@@ -61,14 +61,14 @@
       images/
       wider_val.txt
 ```
-ps: wider_val.txt only include val file names but not label information.
+ps: wider_val.txt 只包括验证集的文件名不包括标注信息.
 
-##### Data1
+##### 数据2
 We also provide the organized dataset we used as in the above directory structure.
 
 Link: from [google cloud](https://drive.google.com/open?id=11UGV3nbVv1x9IC--_tK3Uxf7hA6rlbsS) or [baidu cloud](https://pan.baidu.com/s/1jIp9t30oYivrAvrgUgIoLQ) Password: ruck
 
-## Training
+## 训练
 We provide restnet50 and mobilenet0.25 as backbone network to train model.
 We trained Mobilenet0.25 on imagenet dataset and get 46.58%  in top 1. If you do not wish to train the model, we also provide trained model. Pretrain model  and trained model are put in [google cloud](https://drive.google.com/open?id=1oZRSG0ZegbVkVwUd8wUIQx8W7yfZ_ki1) and [baidu cloud](https://pan.baidu.com/s/12h97Fy1RYuqMMIV-RpzdPg) Password: fstq . The model could be put as follows:
 ```Shell
@@ -86,7 +86,7 @@ We trained Mobilenet0.25 on imagenet dataset and get 46.58%  in top 1. If you do
   ```
 
 
-## Evaluation
+## 评价
 ### Evaluation widerface val
 1. Generate txt file
 ```Shell
@@ -115,10 +115,10 @@ python test_fddb.py --trained_model weight_file --network mobile0.25 or resnet50
 
 <p align="center"><img src="curve/1.jpg" width="640"\></p>
 
-## TensorRT
+## TensorRT加速
 -[TensorRT](https://github.com/wang-xinyu/tensorrtx/tree/master/retinaface)
 
-## References
+## 参考文献
 - [FaceBoxes](https://github.com/zisianw/FaceBoxes.PyTorch)
 - [Retinaface (mxnet)](https://github.com/deepinsight/insightface/tree/master/RetinaFace)
 ```
